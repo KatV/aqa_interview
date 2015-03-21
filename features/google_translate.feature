@@ -3,39 +3,29 @@ Feature: Google Translate
 In order to translate a word, text
 I want to add a word, text, change language, press button
 
-Scenario: Translate word from English into Russian
+Scenario: Translate word from Russian into English 
 	Given I go to Google Translate site
-	When I fill in gap with "cat" 
-	Then I should see "кот"
+	When I fill in gap with "кот" 
+	Then I should see "cat"
 
-Scenario: Translate text from Russian into English
+Scenario: Translate text from English into Russian
 	Given I go to Google Translate site
-	When I fill in gap with "Погода хорошая. Солнце светит ярко."
-	And I choose English language
+	When I fill in gap with "The weather is good. The sun is shining brightly."
+	And I choose "Russian"
 	And I press the button	
-	Then I should see "The weather is good. The sun is shining brightly."
+	Then I should see "Хорошая погода.Солнце светит ярко."
 	
-Scenario Outline: Translate a variety of words into Russian
-	Given I go to Google Translate site
-	When I enter <query> 
-    And I choose Russian language
-	Then I should see a translation of <query1>
+Scenario Outline: Translate a world from language1 into language2
+        Given I go to Google Translate site
+        When I enter <query>
+        And I choose language <language>
+        And I press the button
+        Then I see translation
     
-    Examples:
-    |query|query1|
-    |cat|кот|
-    |<h2>|<h2>|
-	
-Scenario Outline: Translate words from Russian into English	
-	Given I go to Google Translate site
-	When I enter <query> 
-    And I choose English language
-	And I press the button
-	Then I should see a translation of <query1>
-	
-	Examples:
-    |query|query1|
-    |кот|cat|
+        Examples:
+        | query | language |
+        | кот  | Italian  | 
+		| cat  | Norwegian  |
 	 
     
 	

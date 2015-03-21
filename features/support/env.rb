@@ -1,2 +1,2 @@
-
+require "watir-webdriver"
 
